@@ -1,0 +1,3 @@
+aws-creds:
+  key: your_aws_access_key
+  secret: your_aws_secret_key
