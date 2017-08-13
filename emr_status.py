@@ -32,13 +32,16 @@ emr = boto3.client(
     region_name='us-east-1'
 )
 
-clusters = emr.list_clusters()
-status_key = clusters['Clusters'][0]['Status']['State']
-status_code = status_map[status_key]
+def get_status():
+    clusters = emr.list_clusters()
+    status_key = clusters['Clusters'][0]['Status']['State']
+    return status_map[status_key]
 
 serial_path = sys.argv[1]
 serial_connector = serial.Serial(serial_path)
 
 while 1:
-    serial_connector.write(status_code)
-    time.sleep(10)
+    status_code = get_status()
+    print("Received status to write: {}".format(status_code))
+    serial_connector.write(status_code.value)
+    time.sleep(15)
