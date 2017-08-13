@@ -8,9 +8,9 @@ from pathlib import Path
 
 
 class Status(Enum):
-    GREEN = 0
-    YELLOW = 1
-    RED = 2
+    GREEN = b'0'
+    YELLOW = b'1'
+    RED = b'2'
 
 status_map = {
     'TERMINATED': Status.GREEN,
