@@ -35,6 +35,8 @@ emr = boto3.client(
 def get_status():
     clusters = emr.list_clusters()
     status_key = clusters['Clusters'][0]['Status']['State']
+    if status_key not in status_map.keys():
+        return status_map['RUNNING']
     return status_map[status_key]
 
 serial_path = sys.argv[1]
