@@ -14,6 +14,7 @@ class Status(Enum):
 
 status_map = {
     'TERMINATED': Status.GREEN,
+    'WAITING': Status.GREEN,
     'TERMINATED_WITH_ERRORS': Status.RED,
     'RUNNING': Status.YELLOW
 }
